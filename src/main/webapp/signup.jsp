@@ -26,6 +26,15 @@
 							<input type = "text" name = "user_name" placeholder="Enter username"/>
 							<input type = "password" name = "user_password" placeholder="Enter password"/>
 							<input type = "email" name = "user_email" placeholder="Enter email"/>
+							<div class="file-field input-field">
+							<div class="btn">
+								<span>File</span> 
+								<input name = "image" type="file">
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text">
+							</div>
+							</div>
 							<button type ="submit" class ="btn #8e24aa purple darken-1" style="margin-top:20px">Submit</button>
 						</form>
 					</div>
@@ -45,8 +54,8 @@
   		<script>
 				$("#myform").on('submit', function(event){
 					event.preventDefault();
-					
-					var f = $(this).serialize();
+					/*var f = $(this).serialize();  */
+					let f = new FormData(this);
 					
 					console.log(f);
 					$(".loader").show();
@@ -74,7 +83,9 @@
 							console.log(data);
 							console.log(error);
 							
-						}
+						},
+						processData: false,
+						contentType:false,
 						
 					
 					})
